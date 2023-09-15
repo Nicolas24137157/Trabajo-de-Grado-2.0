@@ -1,4 +1,14 @@
 import React from 'react'
+import "./Registrar_Producto.css"
+import plato_comida from '../assets/plato_comida.jpg'
+import insumo from '../assets/insumos.jpg'
+import proveedores from '../assets/Proveedores.jpg'
+import ventas from '../assets/ventas_comidas.jpg'
+import historial_inventario from '../assets/historial-inventario.png'
+import pedidos from '../assets/pedidos_comida.jpg'
+import devoluciones from '../assets/devoluciones.jpg'
+
+
 
 function Menu() {
   return (
@@ -9,7 +19,7 @@ function Menu() {
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Menú de Inventario</h1>
+                    <h1 class="display-4 fw-bolder">Menú del Inventario del Restaurante Oh La Lá</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Elige una opción</p>
                 </div>
             </div>
@@ -21,14 +31,14 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={plato_comida} alt="Plato_Comida" />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     {/* <!-- Product name--> */}
                                     <h5 class="fw-bolder">Platos del Menú</h5>
                                     {/* <!-- Product price--> */}
-                                    $40.00 - $80.00
+                                    {/* $40.00 - $80.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
@@ -40,9 +50,9 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Sale badge--> */}
-                            <div class="badge bg-dark text-white position-absolute" >Sale</div>
+                            {/* <div class="badge bg-dark text-white position-absolute" >Sale</div> */}
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={insumo} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -57,8 +67,8 @@ function Menu() {
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     {/* <!-- Product price--> */}
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    {/* <span class="text-muted text-decoration-line-through">$20.00</span> */}
+                                    {/* $18.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
@@ -70,17 +80,17 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Sale badge--> */}
-                            <div class="badge bg-dark text-white position-absolute" >Sale</div>
+                            {/* <div class="badge bg-dark text-white position-absolute" >Sale</div> */}
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={proveedores} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     {/* <!-- Product name--> */}
                                     <h5 class="fw-bolder">Proveedores</h5>
                                     {/* <!-- Product price--> */}
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    {/* <span class="text-muted text-decoration-line-through">$50.00</span> */}
+                                    {/* $25.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
@@ -92,7 +102,7 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={ventas} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -107,7 +117,7 @@ function Menu() {
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     {/* <!-- Product price--> */}
-                                    $40.00
+                                    {/* $40.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
@@ -119,17 +129,17 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Sale badge--> */}
-                            <div class="badge bg-dark text-white position-absolute">Sale</div>
+                            {/* <div class="badge bg-dark text-white position-absolute">Sale</div> */}
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={historial_inventario} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     {/* <!-- Product name--> */}
                                     <h5 class="fw-bolder">Historial de Ventas de Pedidos</h5>
                                     {/* <!-- Product price--> */}
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    {/* <span class="text-muted text-decoration-line-through">$50.00</span> */}
+                                    {/* $25.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
@@ -141,18 +151,18 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top6" src={pedidos} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     {/* <!-- Product name--> */}
                                     <h5 class="fw-bolder">Pedidos</h5>
                                     {/* <!-- Product price--> */}
-                                    $120.00 - $280.00
+                                    {/* $120.00 - $280.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="col mb-5">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
                             </div>
                         </div>
@@ -160,9 +170,9 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Sale badge--> */}
-                            <div class="badge bg-dark text-white position-absolute" >Sale</div>
+                            {/* <div class="badge bg-dark text-white position-absolute" >Sale</div> */}
                             {/* <!-- Product image--> */}
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src={devoluciones} alt="..." />
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -177,8 +187,8 @@ function Menu() {
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     {/* <!-- Product price--> */}
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    {/* <span class="text-muted text-decoration-line-through">$20.00</span> */}
+                                    {/* $18.00 */}
                                 </div>
                             </div>
                             {/* <!-- Product actions--> */}
