@@ -64,7 +64,7 @@ function Editar_Insumo() {
 
                    <div class="form-group">
                        <div class="col-md-12 text-center">
-                           <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
+                           <button type="submit" class="btn btn-primary btn-lg1">Actualizar</button>
                        </div>
                    </div>
                    </div>

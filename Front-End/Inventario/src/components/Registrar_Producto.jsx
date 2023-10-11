@@ -1,7 +1,33 @@
 import React from 'react'
 import "./Registrar_Producto.css"
+import { useState } from 'react'
+
+
+
+
+
 
 function Registrar_Producto() {
+    const [nombre_producto,setNombreProducto]  = useState ('')
+    const [precio,setPrecio] = useState ('')
+    function handleClick (){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                nombre_producto: nombre_producto,
+                precio: precio
+                
+                 
+
+            })
+        };
+        fetch('127.0.0.1:3000/productos', requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data));
+        console.log("Nombre:",nombre_producto,precio)
+    }
+    
   return (
     <div>
          {/* <!-- Header--> */}
@@ -29,14 +55,17 @@ function Registrar_Producto() {
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
                             <label htmlFor="name">Nombre del Producto</label>
-                                <input id="fname" name="name" type="text" placeholder="Nombre del Producto" class="form-control"/>
+                                <input id="fname" name="name" type="text" placeholder="Nombre del Producto" class="form-control"
+                                onChange={(e)=>{
+                                    setNombreProducto(e.target.value)
+                                }}/>
                                 
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                             <div class="col-md-8">
-                            <label htmlFor="name">N° De Etiqueta del Producto</label>
+                            <label htmlFor="name">ID  del Producto</label>
                                 <input id="lname" name="name" type="text" placeholder="# De Etiqueta" class="form-control"/>
                                 
                             </div>
@@ -46,7 +75,11 @@ function Registrar_Producto() {
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
                             <label htmlFor="name">Precio del Producto</label>
-                                <input id="email" name="email" type="text" placeholder="Precio" class="form-control"/>
+                                <input id="email" name="email" type="text" placeholder="Precio" class="form-control"
+                                onChange={(e)=>{
+                                    setPrecio(e.target.value)
+                                }}/>
+
                             </div>
                         </div>
 
@@ -56,7 +89,10 @@ function Registrar_Producto() {
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
+                                <button type="submit" class="btn btn-primary btn-lg1" onClick={(e) =>{
+                                    e.preventDefault()
+                                    handleClick()
+                                }}>Registrar</button>
                             </div>
                         </div>
                         </div>

@@ -8,6 +8,7 @@ import historial_inventario from '../assets/historial-inventario.png'
 import pedidos from '../assets/pedidos_comida.jpg'
 import devoluciones from '../assets/devoluciones.jpg'
 import seccion_registro from '../assets/seccion_registro.jpeg'
+import { Link } from 'react-router-dom'
 
 
 
@@ -44,7 +45,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
+                               <Link to='/platos_menu'> <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
+                                <Link to = '/productos_insumos'><div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
@@ -96,7 +97,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
+                                <Link to='/proveedores'><div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
@@ -123,7 +124,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
+                              <Link to = '/ventas'> <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
@@ -145,7 +146,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div>
+                               <Link to = '/historial_ventas'> <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
