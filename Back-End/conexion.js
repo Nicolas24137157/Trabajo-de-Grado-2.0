@@ -2,8 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mysql = require('mysql2');
+var cors = require('cors')
+
+// npx nodemon conexion.js
 
 app.use(express.json())
+app.use(cors())
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -24,7 +28,7 @@ app.post('/productos', (req, res) => {
       ]
       con.query(sql, values, function (err, result) {
         if (err) throw err;
-        res.send("1 record inserted")        
+        res.json("1 record inserted")        
       });
     });    
 })
@@ -36,22 +40,35 @@ app.get('/productos', (req, res) => {
     var sql = "SELECT * FROM productos";
     con.query(sql, function (err, result) {
       if (err) throw err;
-      res.send(result)        
+      res.json(result)        
+    });
+  });   
+})
+
+//READ Solicitar Información de un producto
+app.get('/productos/:id_producto', (req, res) => {
+  con.connect(function(err) {
+    if (err) throw err;    
+    var sql = "SELECT * FROM productos WHERE id_producto = ?;";
+    var values = [req.params.id_producto]
+    con.query(sql, values, function (err, result) {
+      if (err) throw err;
+      res.json(result)        
     });
   });   
 })
 
 //UPDATE actualizar información que ya existe
 app.put('/productos/:id_producto', (req, res) => {  
-  const nombre_producto = req.body['nombre']
+  const nombre_producto = req.body['nombre_producto']
   const precio = req.body['precio']
   con.connect(function(err) {
     if (err) throw err;
     var sql = "UPDATE productos SET nombre_producto = ?, precio = ? WHERE id_producto = ?;";
-    var values = [nombre_producto,precio, req.params.id_producto]      
+    var values = [nombre_producto, precio, req.params.id_producto]      
     con.query(sql, values, function (err, result) {
       if (err) throw err;
-      res.send("Number of records updated: " + result.affectedRows)        
+      res.json("Number of records updated: " + result.affectedRows)        
     });
   });        
 })
@@ -64,7 +81,7 @@ app.delete('/productos/:id_producto', (req, res) => {
     var values = [req.params.id_producto]      
     con.query(sql, values, function (err, result) {
       if (err) throw err;
-      res.send("Number of records deleted: " + result.affectedRows)        
+      res.json("Number of records deleted: " + result.affectedRows)        
     });
   });   
 })
