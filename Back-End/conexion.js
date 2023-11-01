@@ -11,6 +11,14 @@ app.use(cors())
 const productosRouter = require('./productos')
 app.use('/productos', productosRouter)
 
+const insumosRouter = require('./insumos')
+app.use('/insumos', insumosRouter)
+
+const proveedoresRouter = require('./proveedores')
+app.use('/proveedores', proveedoresRouter)
+
+
+
   
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

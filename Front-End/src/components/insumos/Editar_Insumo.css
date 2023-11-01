@@ -3,6 +3,7 @@
     font-size: 27px;
     padding: 10px;
     text-align: center;
+    
 }
 
 .bigicon {
@@ -19,13 +20,10 @@ div.formulario {
 }
 
 button.btn.btn-primary.btn-lg1{
-   
     position: relative;
     background-size: 40px;
     right: 18%;
     font-size:22px;
-
-    
 }
 
 div.form-group{

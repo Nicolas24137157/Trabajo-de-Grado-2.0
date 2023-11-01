@@ -1,7 +1,26 @@
 import React from 'react'
 import "./Registrar_Insumo.css"
+import { useState } from 'react'
+import { postInsumo } from './insumos.service'
+import { Link } from 'react-router-dom'
 
 function Registrar_Insumo() {
+
+    const [nombre_insumo, setNombreInsumo]  = useState ('')
+    const [cantidad, setCantidad] = useState ('')
+    const [fecha_caducidad, setFechaCaducidad]  = useState ('')
+
+    function handleClick (){
+        const insumo = JSON.stringify({ 
+            nombre_insumo: nombre_insumo,
+            cantidad: cantidad,
+            fecha_caducidad: fecha_caducidad
+
+        })
+        postInsumo(insumo).then(res => console.log(res))
+    }
+
+
   return (
     <div>
     {/* <!-- Header--> */}
@@ -22,31 +41,36 @@ function Registrar_Insumo() {
        <div class="well well-sm">
            <form class="form-horizontal" method="post">
                <fieldset>
-                   <legend class="text-center header">Registrar Insumo</legend>
+                   <legend class="text-center header"style={{position:'relative',left:'0px'}}>Registrar Insumo</legend>
                    
                    <div className='formulario'>
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Nombre del Insumo</label>
-                           <input id="fname" name="name" type="text" placeholder="Nombre del Insumo" class="form-control"/>
-                           
+                           <input id="fname" name="name" type="text" placeholder="Nombre del Insumo" class="form-control"
+                           onChange={(e)=>{
+                                    setNombreInsumo(e.target.value)
+                                }}/>
                        </div>
                    </div>
-                   <div class="form-group">
+                   {/* <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">N° De Etiqueta del Insumo</label>
                            <input id="lname" name="name" type="text" placeholder="# De Etiqueta" class="form-control"/>
                            
-                       </div>
-                   </div>
+                       </div>wh
+                   </div> */}
 
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Cantidad del Insumo</label>
-                           <input id="email" name="email" type="text" placeholder="Cantidad" class="form-control"/>
+                           <input id="email" name="email" type="text" placeholder="Cantidad" class="form-control"
+                            onChange={(e)=>{
+                                setCantidad(e.target.value)
+                            }}/>
                        </div>
                    </div>
 
@@ -54,19 +78,29 @@ function Registrar_Insumo() {
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                        <div class="col-md-8">
                         <label htmlFor="name">Fecha de Caducidad del Insumo</label>
-                           <input id="email" name="email" type="date" placeholder="Fecha de Caducidad" class="form-control"/>
+                           <input id="email" name="email" type="date" placeholder="Fecha de Caducidad" class="form-control"
+                           onChange={(e)=>{
+                            setFechaCaducidad(e.target.value)
+                        }}/>
                        </div>
                    </div>
-
-                   
-
-                   
 
                    <div class="form-group">
-                       <div class="col-md-12 text-center">
-                           <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
-                       </div>
-                   </div>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg1" onClick={(e) =>{
+                                    e.preventDefault()
+                                    handleClick()
+                                }}>Registrar</button>
+                            </div>
+                        </div>
+
+
+                   <div class="form-group">
+                            <div class="col-md-12 text-center">
+                              <Link to = '/productos_insumos'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                            </div>
+                        </div>
+
                    </div>
 
                    

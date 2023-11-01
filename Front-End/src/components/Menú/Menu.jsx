@@ -1,13 +1,12 @@
 import React from 'react'
-import "./productos/Registrar_Producto.css"
-import plato_comida from '../assets/plato_comida.jpg'
-import insumo from '../assets/insumos.jpg'
-import proveedores from '../assets/Proveedores.jpg'
-import ventas from '../assets/ventas_comidas.jpg'
-import historial_inventario from '../assets/historial-inventario.png'
-import pedidos from '../assets/pedidos_comida.jpg'
-import devoluciones from '../assets/devoluciones.jpg'
-import seccion_registro from '../assets/seccion_registro.jpeg'
+import plato_comida from '@assets/plato_comida.jpg'
+import insumo from '@assets/insumos.jpg'
+import proveedores from '@assets/Proveedores.jpg'
+import ventas from '@assets/ventas_comidas.jpg'
+import historial_inventario from '@assets/historial-inventario.png'
+import pedidos from '@assets/pedidos_comida.jpg'
+import devoluciones from '@assets/devoluciones.jpg'
+import seccion_registro from '@assets/seccion_registro.jpeg'
 import { Link } from 'react-router-dom'
 
 
