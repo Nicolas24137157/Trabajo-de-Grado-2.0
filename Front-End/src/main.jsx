@@ -15,6 +15,11 @@ import Productos_Insumos from "./components/Productos_Insumos.jsx";
 import Proveedores from "./components/Proveedores.jsx";
 import Ventas from "./components/Ventas.jsx";
 import Historial_Ventas from "./components/Historial_Ventas.jsx";
+import Pedidos from "./components/pedidos/pedidos.jsx";
+import Registrar_Pedidos from "./components/pedidos/Registrar_Pedidos.jsx";
+import Registrar_Devoluciones from "./components/devoluciones/Registrar_Devoluciones.jsx";
+import Seccion_Devoluciones from "./components/devoluciones/Seccion_Devoluciones.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -69,6 +74,23 @@ const router = createBrowserRouter([
     path: "historial_ventas",
     element: <Historial_Ventas/>,
   },
+  {
+    path: "pedidos",
+    element: <Pedidos/>,
+  },
+  {
+    path: "registrar_pedidos",
+    element: <Registrar_Pedidos/>,
+  },
+  {
+    path: "devoluciones",
+    element: <Registrar_Devoluciones/>,
+  },
+  {
+    path: "seccion_registros",
+    element: <Seccion_Devoluciones/>,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

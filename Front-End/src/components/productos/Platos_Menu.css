@@ -16,11 +16,18 @@ footer.py-5.bg-dark{
     margin: 477px 0 0px 0px ;
 }
 
-button.btn.btn-primary.btn-lg{
-    position: relative;
-    top: 400px;
-    left: -210px;
+
+
+.botones {
+    display: flex;
+    align-items: center;  
 }
+
+.botones button {
+    margin-right: 5px;
+}
+
+
 
 .table-wrapper {
     width: 900px;

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getProductos, deleteProducto } from "./productos.service";
 
 function platos_Menu(props) {
-
+  
   const [productos, setProductos] = useState([])
 
   useEffect(()=>{
@@ -12,14 +12,22 @@ function platos_Menu(props) {
   },[])
 
   const borrarProducto = (id_producto) => {
-    deleteProducto(id_producto).then(() =>  
-      getProductos().then( productos => setProductos(productos)) 
-    );
+    // Mostrar una ventana emergente de confirmación
+    const confirmacion = window.confirm('¿Estás seguro de que deseas borrar el plato del Menú?');
+
+    if (confirmacion) {
+      deleteProducto(id_producto).then(() =>
+        getProductos().then(productos => setProductos(productos))
+      );
+    }
   }
+
 
   const editarProducto = (id_producto) => {
     window.location.href = "./editar_producto?id_producto="+id_producto;
   }
+
+  
 
   return (
     <div>
@@ -35,54 +43,83 @@ function platos_Menu(props) {
         </div>
       </header>
 
-      <div className="form-group">
-        <div className="col-md-12 text-center">
-          <Link to="/registrar_producto">
-            <button type="submit" className="btn btn-primary btn-lg">
-              Registrar Producto
-            </button>{" "}
-          </Link>
+      
+      <div className="container">
+  <div className="table-wrapper">
+    <div className="table-title">
+      <div className="row">
+        <div className="col-sm-8">
+          <h2>Platos Del Menú</h2>
         </div>
+        <div className="col-sm-4"></div>
+      </div>
+    </div>
+    <table className="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID del Producto</th>
+          <th>Nombre del Producto</th>
+          <th>Precio</th>
+          <th>Descripción del Producto</th>
+          <th style={{ width: "160px"}}>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {productos.map((producto) => (
+          <tr key={producto.id_producto}>
+            <td>{producto.id_producto}</td>
+            <td>{producto.nombre_producto}</td>
+            <td>{producto.precio}</td>
+            <td>{producto.descripcion}</td>
+            <td className="td-botones">
+              <div className="botones">
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={() => editarProducto(producto.id_producto)}
+              >
+                Editar
+              </button>
+             
+              
+              <button
+                type="button"
+                className="btn btn-danger ml-2"
+                onClick={() => borrarProducto(producto.id_producto)}
+              >
+                Borrar
+              </button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <div className="col-sm-12 text-start">
+        <Link to="/registrar_producto">
+          <button type="submit" className="btn btn-primary btn-lg">
+            Registrar Producto
+          </button>{" "}
+        </Link>
       </div>
 
-      <div className="container">
-        <div className="table-wrapper">
-            <div className="table-title">
-                <div className="row">
-                    <div className="col-sm-8"><h2>Platos Del Menú</h2></div>
-                    <div className="col-sm-4">
-                        
-                    </div>
-                </div>
-            </div>
-            <table className="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID del Producto</th>
-                        <th>Nombre del Producto</th>
-                        <th>Precio</th>
-                        <th>Descripción del Producto</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {productos.map( producto => 
-                    <tr key = {producto.id_producto}>
-                      <td>{producto.id_producto}</td>
-                      <td>{producto.nombre_producto}</td>
-                      <td>{producto.precio}</td>
-                      <td>{producto.descripion}</td>                    
-                      <td>
-                        <a className="add" title="Add" data-toggle="tooltip"><i className="material-icons">&#xE03B;</i></a>
-                        <a onClick={()=>{editarProducto(producto.id_producto)}}className="edit" title="Edit" data-toggle="tooltip"><i className="material-icons">&#xE254;</i></a>
-                        <a onClick={()=>{borrarProducto(producto.id_producto)}} className="delete" title="Delete" data-toggle="tooltip"><i className="material-icons">&#xE872;</i></a>
-                      </td>
-                    </tr>)
-                  }
-                </tbody>
-            </table>
-        </div>
-    </div>     
+      <div className="col-sm-12 text-start" style={{paddingTop: '30px'}}>
+        <Link to="/Menu">
+          <button type="submit" className="btn btn-primary btn-lg">
+            Ir Atrás
+          </button>{" "}
+        </Link>
+      </div>
+      
+  </div>
+  <div>
+  
+</div>
+</div>
+
+    
+    
+      
 
 
       {/* <!-- Footer--> */}

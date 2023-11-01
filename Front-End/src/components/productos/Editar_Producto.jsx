@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import "./Editar_Producto.css"
+import "/src/components/productos/Editar_Producto.css"
 import { useState } from 'react'
 import { useSearchParams } from "react-router-dom"
 import { getProductoById, updateProducto } from './productos.service'
+import { Link } from 'react-router-dom'
 
 function Editar_Producto() {
 
@@ -10,6 +11,7 @@ function Editar_Producto() {
     const [id_producto, setIdProducto]  = useState ('')
     const [nombre_producto, setNombreProducto]  = useState ('')
     const [precio, setPrecio] = useState ('')
+    const [descripcion_producto, setDescripcionProducto]  = useState ('')
 
     useEffect(()=>{
         console.log(queryParameters.get('id_producto'))
@@ -17,13 +19,15 @@ function Editar_Producto() {
             setIdProducto(producto.id_producto)
             setNombreProducto(producto.nombre_producto)
             setPrecio(producto.precio)
+            setDescripcionProducto(producto.descripcion)
         })
     },[])    
 
     function handleClick (){
         const producto = JSON.stringify({            
             nombre_producto:nombre_producto,
-            precio:precio
+            precio:precio,
+            descripcion:descripcion_producto
         })
         updateProducto(id_producto, producto).then( res => {
             console.log(res)
@@ -37,7 +41,7 @@ function Editar_Producto() {
          <header className="bg-dark py-5">
             <div className="container px-4 px-lg-5 my-5">
                 <div className="text-center text-white">
-                    <h1 className="display-4 fw-bolder">Editar Producto</h1>
+                    <h1 className="display-4 fw-bolder text">Editar Productos</h1>
                     <p className="lead fw-normal text-white-50 mb-0">Registra el Producto Atráves del formulario</p>
                 </div>
             </div>
@@ -51,7 +55,7 @@ function Editar_Producto() {
             <div className="well well-sm">
                 <form className="form-horizontal" method="post">
                     <fieldset>
-                        <legend className="text-center header">Editar Producto</legend>
+                    <legend class="text-center header "style={{position:'relative',left:'0px'}}>Editar Producto</legend>
                         
                         <div className='formulario'>
                         <div className="form-group">
@@ -80,6 +84,20 @@ function Editar_Producto() {
                             </div>
                         </div>
 
+                        <div className="form-group">
+                            <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-user bigicon"></i></span>
+                            <div className="col-md-8">
+                            <label htmlFor="name">Descripción del Producto</label>
+                                <input id="fname" name="name" type="text" placeholder="Descripción del Producto" className="form-control"
+                                value={descripcion_producto}
+                                onChange={(e)=>{
+                                    setDescripcionProducto(e.target.value)
+                                }}/>
+                                
+                            </div>
+                        </div>
+
+
                         
 
                         
@@ -91,8 +109,18 @@ function Editar_Producto() {
                                     handleClick()
                                 }}>Actualizar</button>
                             </div>
+                            
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                              <Link to = '/platos_menu'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                            </div>
                         </div>
+
+                        
+                        </div>
+                        
 
                         
                     </fieldset>
@@ -104,7 +132,7 @@ function Editar_Producto() {
     {/* <!-- Footer--> */}
     <footer className="py-5 bg-dark">
             <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
-        </footer>
+        </footer>   
 
 
     </div>

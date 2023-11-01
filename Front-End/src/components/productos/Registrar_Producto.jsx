@@ -2,16 +2,20 @@ import React from 'react'
 import "./Registrar_Producto.css"
 import { useState } from 'react'
 import { postProducto } from './productos.service'
+import { Link } from 'react-router-dom'
 
 function Registrar_Producto() {
 
     const [nombre_producto, setNombreProducto]  = useState ('')
     const [precio, setPrecio] = useState ('')
+    const [descripcion_producto, setDescripcionProducto]  = useState ('')
 
     function handleClick (){
         const producto = JSON.stringify({ 
             nombre_producto: nombre_producto,
-            precio: precio                
+            precio: precio,
+            descripcion: descripcion_producto
+
         })
         postProducto(producto).then(res => console.log(res))
     }
@@ -36,7 +40,8 @@ function Registrar_Producto() {
             <div class="well well-sm">
                 <form class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center header">Registrar Producto</legend>
+                        
+                        <legend class="text-center header "style={{position:'relative',left:'0px'}}>Registrar Producto</legend>
                         
                         <div className='formulario'>
                         <div class="form-group">
@@ -50,15 +55,7 @@ function Registrar_Producto() {
                                 
                             </div>
                         </div>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                            <label htmlFor="name">ID  del Producto</label>
-                                <input id="lname" name="name" type="text" placeholder="# De Etiqueta" class="form-control"/>
-                                
-                            </div>
-                        </div>
-
+                       
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                             <div class="col-md-8">
@@ -71,9 +68,17 @@ function Registrar_Producto() {
                             </div>
                         </div>
 
-                        
-
-                        
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                            <label htmlFor="name">Descripcion del Producto</label>
+                                <input id="fname" name="name" type="text" placeholder="Descripción del Producto" class="form-control"
+                                onChange={(e)=>{
+                                    setDescripcionProducto(e.target.value)
+                                }}/>
+                                
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
@@ -83,7 +88,18 @@ function Registrar_Producto() {
                                 }}>Registrar</button>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                              <Link to = '/platos_menu'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                            </div>
                         </div>
+
+
+
+                        </div>
+
+                        
 
                         
                     </fieldset>
