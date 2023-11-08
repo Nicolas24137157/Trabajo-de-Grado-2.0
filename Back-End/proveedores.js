@@ -10,15 +10,16 @@ var con = mysql.createConnection({
   });
   
   //CREATE Enviar nueva Información
-  router.post('/', (req, res) => {   
+  router.post('/', (req, res) => {
+      const NIT = req.body['nit_proveedor']
       const nombre_proveedor = req.body['nombre_proveedor']
       const celular = req.body['celular']
       const direccion = req.body['direccion']
       con.connect(function(err) {
         if (err) throw err;
-        var sql = "INSERT INTO proveedores (nombre_proveedor, celular, direccion) VALUES (?);";
+        var sql = "INSERT INTO proveedores (NIT,nombre_proveedor, celular, direccion) VALUES (?);";
         var values = [
-          [nombre_proveedor,celular,direccion]
+          [NIT,nombre_proveedor,celular,direccion]
         ]
         con.query(sql, values, function (err, result) {
           if (err) throw err;
@@ -40,11 +41,11 @@ var con = mysql.createConnection({
   })
   
   //READ Solicitar Información de un producto
-  router.get('/:NIT', (req, res) => {
+  router.get('/:id_proveedor', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;    
-      var sql = "SELECT * FROM proveedores WHERE NIT = ?;";
-      var values = [req.params.NIT]
+      var sql = "SELECT * FROM proveedores WHERE id_proveedor = ?;";
+      var values = [req.params.id_proveedor]
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json(result)        
@@ -53,14 +54,15 @@ var con = mysql.createConnection({
   })
   
   //UPDATE actualizar información que ya existe
-  router.put('/:NIT', (req, res) => {  
+  router.put('/:id_proveedor', (req, res) => {
+    const NIT = req.body['NIT']  
     const nombre_proveedor = req.body['nombre_proveedor']
     const celular = req.body['celular']
     const direccion = req.body['direccion']
     con.connect(function(err) {
       if (err) throw err;
-      var sql = "UPDATE proveedores SET nombre_proveedor = ?, celular = ?, direccion = ? WHERE NIT = ?; ";
-      var values = [nombre_proveedor, celular,direccion, req.params.NIT]      
+      var sql = "UPDATE proveedores SET NIT = ?, nombre_proveedor = ?, celular = ?, direccion = ? WHERE id_proveedor = ?; ";
+      var values = [NIT, nombre_proveedor, celular, direccion, req.params.id_proveedor]      
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json("Number of records updated: " + result.affectedRows)        
@@ -69,11 +71,11 @@ var con = mysql.createConnection({
   })
     
   //DELETE Borrar información 
-  router.delete('/:NIT', (req, res) => {
+  router.delete('/:id_proveedor', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;
-      var sql = "DELETE FROM proveedores WHERE NIT = ?";
-      var values = [req.params.NIT]      
+      var sql = "DELETE FROM proveedores WHERE id_proveedor = ?";
+      var values = [req.params.id_proveedor]      
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json("Number of records deleted: " + result.affectedRows)        

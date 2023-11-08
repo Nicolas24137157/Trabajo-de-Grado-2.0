@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { postProveedor } from './proveedores.services'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 function Registrar_Proveedor() {
 
@@ -11,20 +12,33 @@ function Registrar_Proveedor() {
     const [direccion, setDireccion]  = useState ('')
 
     function handleClick (){
-        const proveedor = JSON.stringify({ 
+        const proveedor = JSON.stringify({
+            nit_proveedor:nit_proveedor,
             nombre_proveedor: nombre_proveedor,
             celular: celular,
-            direccion: direccion,
-            nit_proveedor:nit_proveedor
+            direccion: direccion
+            
 
         })
-        postProveedor(proveedor).then(res => console.log(res))
+        // postProveedor(proveedor).then(res => console.log(res))
+        postProveedor(proveedor)
+        .then((res) =>{
+            Swal.fire({
+                title: 'Proveedor Registrado Exitosamente',
+                icon: 'success',
+        }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '/proveedores';
+            }
+        });
+    });
+        
     }
 
-
+    
 
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
     <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
@@ -103,7 +117,7 @@ function Registrar_Proveedor() {
                     
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                              <Link to = '/proveedores'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                              <Link to = '/proveedores  '> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 

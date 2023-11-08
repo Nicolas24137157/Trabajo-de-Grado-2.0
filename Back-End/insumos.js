@@ -15,9 +15,10 @@ var con = mysql.createConnection({
       const nombre_insumo = req.body['nombre_insumo']
       const cantidad = req.body['cantidad']
       var fecha_caducidad = req.body['fecha_caducidad']
-      // if (fecha_caducidad == "") {
-      //   fecha_caducidad =null
-      // }
+      if (fecha_caducidad == "") {
+        fecha_caducidad = null
+      }
+      console.log(fecha_caducidad);
       con.connect(function(err) {
         if (err) res.json("error");
         var sql = "INSERT INTO insumos (nombre_insumo, cantidad, fecha_caducidad) VALUES (?);";
@@ -35,10 +36,11 @@ var con = mysql.createConnection({
   router.get('/', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;    
-      var sql = "SELECT * FROM insumos";
+      var sql = "SELECT id_insumos,nombre_insumo,cantidad,DATE_FORMAT(fecha_caducidad,'%Y-%m-%d') AS fecha_caducidad FROM insumos";
       con.query(sql, function (err, result) {
         if (err) throw err;
-        res.json(result)        
+        res.json(result) 
+        console.log(result)       
       });
     });     
   })

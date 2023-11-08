@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getInsumos, deleteInsumo } from "./insumos.service";
+import Swal from 'sweetalert2';
 
 function Productos_Insumos(props) {
 
@@ -11,22 +12,47 @@ function Productos_Insumos(props) {
   },[])
 
   const borrarInsumo = (id_insumos) => {
-    // Mostrar una ventana emergente de confirmación
-    const confirmacion = window.confirm('¿Estás seguro de que deseas borrar el Insumo?');
-
-    if (confirmacion) {
-      deleteInsumo(id_insumos).then(() =>
-        getInsumos().then(insumos => setInsumos(insumos))
-      );
-    }
+    Swal.fire({
+      title: '¿Estás seguro de que deseas borrar el plato del Menú?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, elimina el producto
+        deleteInsumo(id_insumos).then(() => {
+          getInsumos().then((insumos) => setInsumos(insumos));
+        });
+      }
+    });
   }
+
 
 
   const editarInsumo = (id_insumos) => {
-    window.location.href = "./editar_insumo?id_insumos="+id_insumos;
+    // window.location.href = "./editar_insumo?id_insumos="+id_insumos;
+    Swal.fire({
+      title: '¿Quieres editar este producto?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Editar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "./editar_insumo?id_insumos="+id_insumos;
+      }
+    });
   }
+
+ 
+  
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
       
          {/* <!-- Header--> */}
       <header className="bg-dark py-5">
@@ -69,9 +95,10 @@ function Productos_Insumos(props) {
             <td>{insumo.id_insumos}</td>
             <td>{insumo.nombre_insumo}</td>
             <td>{insumo.cantidad}</td>
-            <td>{insumo.fecha_caducidad.substring(0, 10)}</td>
+            <td>{insumo.fecha_caducidad}</td>
             <td className="td-botones">
               <div className="botones">
+                
               <button
                 type="button"
                 className="btn btn-warning"

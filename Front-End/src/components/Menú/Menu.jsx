@@ -8,15 +8,17 @@ import pedidos from '@assets/pedidos_comida.jpg'
 import devoluciones from '@assets/devoluciones.jpg'
 import seccion_registro from '@assets/seccion_registro.jpeg'
 import { Link } from 'react-router-dom'
+import './Menu.css'
 
 
 
 function Menu() {
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
       <body>
         
         {/* <!-- Header--> */}
+        
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">

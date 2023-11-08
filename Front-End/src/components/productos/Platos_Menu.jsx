@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Platos_Menu.css";
 import { Link } from "react-router-dom";
 import { getProductos, deleteProducto } from "./productos.service";
+import Swal from 'sweetalert2';
 
 function platos_Menu(props) {
   
@@ -12,25 +13,44 @@ function platos_Menu(props) {
   },[])
 
   const borrarProducto = (id_producto) => {
-    // Mostrar una ventana emergente de confirmación
-    const confirmacion = window.confirm('¿Estás seguro de que deseas borrar el plato del Menú?');
-
-    if (confirmacion) {
-      deleteProducto(id_producto).then(() =>
-        getProductos().then(productos => setProductos(productos))
-      );
-    }
+    Swal.fire({
+      title: '¿Estás seguro de que deseas borrar el plato del Menú?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Si el usuario confirma, elimina el producto
+        deleteProducto(id_producto).then(() => {
+          getProductos().then((productos) => setProductos(productos));
+        });
+      }
+    });
   }
-
-
-  const editarProducto = (id_producto) => {
-    window.location.href = "./editar_producto?id_producto="+id_producto;
-  }
-
   
 
+  const editarProducto = (id_producto) => {
+    Swal.fire({
+      title: '¿Quieres editar este producto?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Editar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "./editar_producto?id_producto=" + id_producto;
+      }
+    });
+  }
+
+ 
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
       {/* <!-- Header--> */}
       <header className="bg-dark py-5">
         <div className="container px-4 px-lg-5 my-5">

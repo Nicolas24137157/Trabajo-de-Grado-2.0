@@ -21,28 +21,30 @@ function Editar_Insumo() {
 
     useEffect(()=>{
         console.log(queryParameters.get('id_insumos'))
-        getInsumoById(queryParameters.get('id_insumos')).then(producto => {
-            setIdInsumo(producto.id_insumos)
-            setNombreInsumo(producto.nombre_insumo)
-            setCantidad(producto.cantidad)
-            setFechaCaducidad(producto.fecha_caducidad)
+        getInsumoById(queryParameters.get('id_insumos')).then(insumo => {
+            setIdInsumo(insumo.id_insumos)
+            setNombreInsumo(insumo.nombre_insumo)
+            setCantidad(insumo.cantidad)
+            setFechaCaducidad(insumo.fecha_caducidad)
         })
     },[])    
 
     function handleClick (){
-        const producto = JSON.stringify({            
+        const insumo = JSON.stringify({            
             nombre_insumo:nombre_insumo,
             cantidad:cantidad,
             fecha_caducidad:fecha_caducidad
         })
-        updateInsumo(id_insumos, producto).then( res => {
+        updateInsumo(id_insumos, insumo).then( res => {
             console.log(res)
             
         })
     }
     
+    
+
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
     <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
@@ -61,7 +63,7 @@ function Editar_Insumo() {
        <div class="well well-sm">
            <form class="form-horizontal" method="post">
                <fieldset>
-                   <legend class="text-center header">Editar Insumo</legend>
+                   <legend class="text-center header"style={{position:'relative',left:'0px'}}>Editar Insumo</legend>
                    
                    <div className='formulario'>
                    <div class="form-group">

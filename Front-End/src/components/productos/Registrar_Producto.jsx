@@ -3,12 +3,15 @@ import "./Registrar_Producto.css"
 import { useState } from 'react'
 import { postProducto } from './productos.service'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
 
 function Registrar_Producto() {
 
     const [nombre_producto, setNombreProducto]  = useState ('')
     const [precio, setPrecio] = useState ('')
     const [descripcion_producto, setDescripcionProducto]  = useState ('')
+    
 
     function handleClick (){
         const producto = JSON.stringify({ 
@@ -17,11 +20,24 @@ function Registrar_Producto() {
             descripcion: descripcion_producto
 
         })
-        postProducto(producto).then(res => console.log(res))
+        
+        postProducto(producto)
+        .then((res) =>{
+            Swal.fire({
+                title: 'Plato De Comida Registrado Exitosamente',
+                icon: 'success',
+        }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '/platos_menu';
+            }
+        });
+    });
     }
+
+    
     
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
          {/* <!-- Header--> */}
          <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">

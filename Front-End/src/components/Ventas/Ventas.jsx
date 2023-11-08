@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Ventas() {
   return (
@@ -21,70 +22,87 @@ function Ventas() {
         </div>
       </div>
 
-      <div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2>Ventas</h2></div>
-                    <div class="col-sm-4">
-                        
-                    </div>
-                </div>
-            </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID Del Producto</th>
-                        <th>Nombre del Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidas Vendidas</th>
-                        <th>Ingreso Total Generado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-							
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-							
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-							
-                        </td>
-                    </tr>      
-                </tbody>
-            </table>
+      <div className="container">
+  <div className="table-wrapper">
+    <div className="table-title">
+      <div className="row">
+        <div className="col-sm-8">
+          <h2>Ventas</h2>
         </div>
-    </div>     
+        <div className="col-sm-4"></div>
+      </div>
+    </div>
+    <table className="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre del Producto</th>
+          <th>Mes del Producto Vendido</th>
+          <th>Cantidades Totales Vendidas (Cada Mes)</th>
+          <th>Ingreso Total Generado</th>
+          {/* <th>Dirección</th> */}
+          <th style={{ width: "160px"}}>Opciones</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        {/* {proveedores.map((proveedor) => ( */}
+          {/* <tr key={proveedor.id_proveedor}>
+            <td>{proveedor.id_proveedor}</td>
+            <td>{proveedor.NIT}</td>
+            <td>{proveedor.nombre_proveedor}</td>
+            <td>{proveedor.celular}</td>
+            <td>{proveedor.direccion}</td> */}
+            <td className="td-botones">
+              <div className="botones">
+              <button
+                type="button"
+                className="btn btn-warning"
+                // onClick={() => editarProveedor(proveedor.id_proveedor)}
+              >
+                Editar
+              </button>
+             
+              
+              <button
+                type="button"
+                className="btn btn-danger ml-2"
+                // onClick={() => borrarProveedor(proveedor.id_proveedor)}
+              >
+                Borrar
+              </button>
+              </div>
+           </td> 
+          {/* </tr> */}
+        {/* // ))} */}
+      </tbody>
+    </table>
+    <div className="col-sm-12 text-start">
+        <Link to="/registrar_proveedor">
+          <button type="submit" className="btn btn-primary btn-lg">
+            Registrar Proveedor
+          </button>{" "}
+        </Link>
+      </div>
+
+      <div className="col-sm-12 text-start" style={{paddingTop: '30px'}}>
+        <Link to="/Menu">
+          <button type="submit" className="btn btn-primary btn-lg">
+            Ir Atrás
+          </button>{" "}
+        </Link>
+      </div>
+      
+  </div>
+  <div>
+  
+</div>
+</div>
 
 
       {/* <!-- Footer--> */}
-      <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">
+      <footer className="py-5 bg-dark">
+        <div className="container">
+          <p className="m-0 text-center text-white">
             Copyright &copy; Restaurante Oh La Lá
           </p>
         </div>

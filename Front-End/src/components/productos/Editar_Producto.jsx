@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useSearchParams } from "react-router-dom"
 import { getProductoById, updateProducto } from './productos.service'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 function Editar_Producto() {
 
@@ -29,14 +30,22 @@ function Editar_Producto() {
             precio:precio,
             descripcion:descripcion_producto
         })
-        updateProducto(id_producto, producto).then( res => {
-            console.log(res)
-            
-        })
-    }
+        updateProducto(id_producto, producto)
+      .then((res) => {
+        Swal.fire({
+          title: 'Plato Del Menú Actualizado Correctamente',
+          icon: 'success',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Redirige al componente Platos_Menu
+            window.location.href = '/platos_menu';
+          }
+        });
+      });
+  }
     
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
          {/* <!-- Header--> */}
          <header className="bg-dark py-5">
             <div className="container px-4 px-lg-5 my-5">

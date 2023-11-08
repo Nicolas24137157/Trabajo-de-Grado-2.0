@@ -1,5 +1,6 @@
 import React from 'react'
 import "/src/components/pedidos/Registrar_Pedidos.css"
+import { Link } from 'react-router-dom'
 
 function Registrar_Pedidos() {
   return (
@@ -16,12 +17,12 @@ function Registrar_Pedidos() {
    {/* <!-- Formulario--> */}
 
    <div class="container">
-<div class="row">
+   <div class="row">
    <div class="col-md-12">
        <div class="well well-sm">
            <form class="form-horizontal" method="post">
                <fieldset>
-                   <legend class="text-center header">Registrar Pedido</legend>
+                   <legend class="text-center header"style={{position:'relative',left:'0px'}}>Registrar Pedido</legend>
                    
                    <div className='formulario'>
                    <div class="form-group">
@@ -84,6 +85,13 @@ function Registrar_Pedidos() {
                            <button type="submit" class="btn btn-primary btn-lg2">Registrar Pedido</button>
                        </div>
                    </div>
+                    
+                   <div class="form-group">
+                            <div class="col-md-12 text-center">
+                              <Link to = '/proveedores  '> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                            </div>
+                        </div>
+
                    </div>
 
                    

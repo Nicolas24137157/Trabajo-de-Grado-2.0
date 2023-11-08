@@ -3,6 +3,7 @@ import "./Registrar_Insumo.css"
 import { useState } from 'react'
 import { postInsumo } from './insumos.service'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 function Registrar_Insumo() {
 
@@ -17,12 +18,22 @@ function Registrar_Insumo() {
             fecha_caducidad: fecha_caducidad
 
         })
-        postInsumo(insumo).then(res => console.log(res))
+        postInsumo(insumo)
+        .then((res) =>{
+            Swal.fire({
+                title: 'Insumo Registrado Exitosamente',
+                icon: 'success',
+        }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '/productos_insumos';
+            }
+        });
+    });
     }
 
 
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
     <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
