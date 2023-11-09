@@ -139,7 +139,7 @@ function Menu() {
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     {/* <!-- Product name--> */}
-                                    <h5 class="fw-bolder">Historial de Ventas de Pedidos</h5>
+                                    <h5 class="fw-bolder">Reservas</h5>
                                     {/* <!-- Product price--> */}
                                     {/* <span class="text-muted text-decoration-line-through">$50.00</span> */}
                                     {/* $25.00 */}
@@ -233,6 +233,35 @@ function Menu() {
                             </div>
                         </div>
                     </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            {/* <!-- Product image--> */}
+                            <img class="card-img-top" src={seccion_registro} alt="..." />
+                            {/* <!-- Product details--> */}
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    {/* <!-- Product name--> */}
+                                  <h5 class="fw-bolder">Registro de Mesas</h5>
+                                    {/* <!-- Product reviews--> */}
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    {/* <!-- Product price--> */}
+                                    {/* $40.00 */}
+                                </div>
+                            </div>
+                            {/* <!-- Product actions--> */}
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <Link to ="/seccion_registros"><div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </section>

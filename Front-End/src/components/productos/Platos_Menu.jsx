@@ -34,7 +34,7 @@ function platos_Menu(props) {
 
   const editarProducto = (id_producto) => {
     Swal.fire({
-      title: '¿Quieres editar este producto?',
+      title: '¿Quieres Editar Este Plato Del Menú?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

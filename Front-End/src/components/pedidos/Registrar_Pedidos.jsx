@@ -88,7 +88,7 @@ function Registrar_Pedidos() {
                     
                    <div class="form-group">
                             <div class="col-md-12 text-center">
-                              <Link to = '/proveedores  '> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                              <Link to = '/pedidos  '> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 

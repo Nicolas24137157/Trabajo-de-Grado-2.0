@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const mysql = require('mysql2');
 
-var con = mysql.createConnection({
+let con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "developer",
@@ -13,17 +13,17 @@ var con = mysql.createConnection({
   router.post('/', (req, res) => {   
       
       const nombre_insumo = req.body['nombre_insumo']
-      const cantidad = req.body['cantidad']
-      var fecha_caducidad = req.body['fecha_caducidad']
+      // const cantidad = req.body['cantidad']
+      let fecha_caducidad = req.body['fecha_caducidad']
       if (fecha_caducidad == "") {
         fecha_caducidad = null
       }
       console.log(fecha_caducidad);
       con.connect(function(err) {
         if (err) res.json("error");
-        var sql = "INSERT INTO insumos (nombre_insumo, cantidad, fecha_caducidad) VALUES (?);";
-        var values = [
-          [nombre_insumo,cantidad,fecha_caducidad]
+        let sql = "INSERT INTO insumos (nombre_insumo,fecha_caducidad) VALUES (?);";
+        let values = [
+          [nombre_insumo,fecha_caducidad]
         ]
         con.query(sql, values, function (err, result) {
           if (err) throw err;
@@ -36,7 +36,7 @@ var con = mysql.createConnection({
   router.get('/', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;    
-      var sql = "SELECT id_insumos,nombre_insumo,cantidad,DATE_FORMAT(fecha_caducidad,'%Y-%m-%d') AS fecha_caducidad FROM insumos";
+      let sql = "SELECT id_insumos,nombre_insumo,DATE_FORMAT(fecha_caducidad,'%Y-%m-%d') AS fecha_caducidad FROM insumos";
       con.query(sql, function (err, result) {
         if (err) throw err;
         res.json(result) 
@@ -49,8 +49,8 @@ var con = mysql.createConnection({
   router.get('/:id_insumos', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;    
-      var sql = "SELECT * FROM insumos WHERE id_insumos = ?;";
-      var values = [req.params.id_insumos]
+      let sql = "SELECT * FROM insumos WHERE id_insumos = ?;";
+      let values = [req.params.id_insumos]
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json(result)        
@@ -65,8 +65,8 @@ var con = mysql.createConnection({
     const fecha_caducidad = req.body['fecha_caducidad']
     con.connect(function(err) {
       if (err) throw err;
-      var sql = "UPDATE insumos SET nombre_insumo = ?, cantidad = ?, fecha_caducidad = ? WHERE id_insumos = ?; ";
-      var values = [nombre_insumo, cantidad,fecha_caducidad, req.params.id_insumos]      
+      let sql = "UPDATE insumos SET nombre_insumo = ?, cantidad = ?, fecha_caducidad = ? WHERE id_insumos = ?; ";
+      let values = [nombre_insumo, cantidad,fecha_caducidad, req.params.id_insumos]      
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json("Number of records updated: " + result.affectedRows)        
@@ -78,8 +78,8 @@ var con = mysql.createConnection({
   router.delete('/:id_insumos', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;
-      var sql = "DELETE FROM insumos WHERE id_insumos = ?";
-      var values = [req.params.id_insumos]      
+      let sql = "DELETE FROM insumos WHERE id_insumos = ?";
+      let values = [req.params.id_insumos]      
       con.query(sql, values, function (err, result) {
         if (err) throw err;
         res.json("Number of records deleted: " + result.affectedRows)        

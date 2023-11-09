@@ -35,7 +35,7 @@ function Productos_Insumos(props) {
   const editarInsumo = (id_insumos) => {
     // window.location.href = "./editar_insumo?id_insumos="+id_insumos;
     Swal.fire({
-      title: '¿Quieres editar este producto?',
+      title: '¿Quieres Editar Este Insumo?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

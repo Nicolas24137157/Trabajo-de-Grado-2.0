@@ -1,4 +1,4 @@
-fieldset.fieldset1{
+/* fieldset.fieldset1{
     position: relative;
     right: 100px;
 }
@@ -23,7 +23,7 @@ input#fñname.form-control{
     bottom: 57px;
 } */
 
-button.btn.btn-primary.btn-lg3{
+/* button.btn.btn-primary.btn-lg3{
     position: relative;
     background-size: 40px;
     right: 46%;
@@ -40,4 +40,19 @@ legend.text-center.header{
     position: relative;
     left: 80px;
     font-size: 40px;
+} */
+
+fieldset.fieldset2{
+    margin-top: 42px;
+}
+
+#insumotitulo{
+    position: relative;
+    bottom: 40px;
+}
+
+#botonfinal{
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 25px;
 }

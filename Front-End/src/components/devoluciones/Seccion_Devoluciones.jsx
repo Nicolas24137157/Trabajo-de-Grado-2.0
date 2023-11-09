@@ -30,6 +30,7 @@ function Seccion_Devoluciones() {
           <table class="table table-bordered">
             <thead>
               <tr>
+                <th>Tipo de Devolución</th>
                 <th>Número del Insumo</th>
                 <th>Cantidad de Insumo(s) a devolver</th>
                 <th>Descripción del Insumo</th>

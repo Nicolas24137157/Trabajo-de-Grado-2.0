@@ -15,7 +15,7 @@ import Registrar_Proveedor from "/src/components/proveedores/Registrar_Proveedor
 import Editar_Proveedor from "/src/components/proveedores/Editar_Proveedor.jsx";
 import Ventas from "/src/components/Ventas/Ventas.jsx";
 import Historial_Ventas from "/src/components/Ventas/Historial_Ventas.jsx";
-import Pedidos from "./components/pedidos/pedidos.jsx";
+import Pedidos from "./components/pedidos/Pedidos.jsx";
 import Registrar_Pedidos from "./components/pedidos/Registrar_Pedidos.jsx";
 import Registrar_Devoluciones from "./components/devoluciones/Registrar_Devoluciones.jsx";
 import Seccion_Devoluciones from "./components/devoluciones/Seccion_Devoluciones.jsx";

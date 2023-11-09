@@ -108,3 +108,17 @@ table.table td .add {
     display: none;
 }
 
+.table-wrapper{
+    border-radius: 10px;
+    border: 2px solid rgb(6, 113, 184); 
+}
+
+td{
+    border: 2px solid rgb(175, 186, 194) !important; 
+}
+
+th{
+    border: 2px solid rgb(175, 186, 194) !important; 
+}
+
+
