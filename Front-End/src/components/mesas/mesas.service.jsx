@@ -1,54 +1,53 @@
-export async function postProducto(producto){
-    console.log(producto)
+export async function postMesa(mesa){
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: producto
+        body: mesa
     };    
-    return await fetch('http://127.0.0.1:3000/productos', requestOptions)
+    return await fetch('http://127.0.0.1:3000/mesa', requestOptions)
         .then(response => response.json())
         .then(data => data);
 }
 
-export async function getProductos(){
+export async function getMesas(){
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
-    return await fetch('http://127.0.0.1:3000/productos', requestOptions)
+    return await fetch('http://127.0.0.1:3000/mesa', requestOptions)
     .then(response => response.json())
     .then(data => data );        
 }
 
-export async function getProductoById(id_producto){
+export async function getMesaById(id_mesa){
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     };
-    console.log("geting product",id_producto)
-    return await fetch('http://127.0.0.1:3000/productos/'+id_producto, requestOptions)
+    console.log("geting mesa",id_mesa)
+    return await fetch('http://127.0.0.1:3000/mesa/'+id_mesa, requestOptions)
     .then(response => response.json())
     .then(data => data[0]);  
 }
 
-export async function updateProducto(id_producto, producto){
-    console.log(producto)
+export async function updateMesa(id_mesa, mesa){
+    console.log(mesa)
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: producto
+        body: mesa
     };    
-    return await fetch('http://127.0.0.1:3000/productos/'+id_producto, requestOptions)
+    return await fetch('http://127.0.0.1:3000/mesa/'+id_mesa, requestOptions)
         .then(response => response.json())
         .then(data => data);
 }
 
-export async function deleteProducto(id_producto){
+export async function deleteMesa(id_mesa){
     const requestOptions = {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     };
-    return await fetch('http://127.0.0.1:3000/productos/'+id_producto, requestOptions)
+    return await fetch('http://127.0.0.1:3000/mesa/'+id_mesa, requestOptions)
         .then(response => response.json())
         .then(data => data);
 }

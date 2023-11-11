@@ -5,6 +5,8 @@ import { postInsumo } from './insumos.service'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
+
+
 function Registrar_Insumo() {
 
     const [nombre_insumo, setNombreInsumo]  = useState ('')
@@ -65,14 +67,7 @@ function Registrar_Insumo() {
                                 }}/>
                        </div>
                    </div>
-                   {/* <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                       <div class="col-md-8">
-                       <label htmlFor="name">N° De Etiqueta del Insumo</label>
-                           <input id="lname" name="name" type="text" placeholder="# De Etiqueta" class="form-control"/>
-                           
-                       </div>wh
-                   </div> */}
+                
 
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
@@ -84,6 +79,27 @@ function Registrar_Insumo() {
                             }}/>
                        </div>
                    </div>
+
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                    <div class="col-md-8">
+                        <label htmlFor="unidadMedida">Unidad De Medida Del Insumo</label>
+                        <select id="unidadMedida" name="unidadMedida" class="form-control">
+                            
+                            <option value="libras">Libra(s)</option>
+                            <option value="unidades">Gramos (Grs)</option>
+                            <option value="kg">Kilogramos (Kg)</option>
+                            <option value="kg">Arroba(s)</option>
+                            <option value="lts">Litro(s) (Lts)</option>
+                            <option value="mltrs">Mililitro(s) (Mltrs)</option>
+                            <option value="oz">Onza(s) (oz)</option>
+                            <option value="unidad">Unidad</option>
+                            <option value="unidades">Unidades</option>
+                            <option value="unidades">Centímetros(Cms)</option>
+                        </select>
+                    </div>
+                </div>
+
 
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>

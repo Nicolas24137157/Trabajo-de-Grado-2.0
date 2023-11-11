@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 
 function Registrar_Pedidos() {
   return (
-    <div> {/* <!-- Header--> */}
+    <div className="animate__animated animate__fadeIn animate"> 
+    
+    {/* <!-- Header--> */}
     <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
            <div class="text-center text-white">
@@ -29,15 +31,35 @@ function Registrar_Pedidos() {
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Nombre de la Persona del Pedido</label>
-                           <input id="fname" name="name" type="text" placeholder="" class="form-control"/>
-                           
+                           <input id="fname" name="name" type="text" placeholder="Nombre de la Persona" class="form-control"/>
                        </div>
                    </div>
+
+                   <div class="form-group">
+                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                    <div class="col-md-8">
+                        <label htmlFor="unidadMedida">Tipo de Identificación</label>
+                        <select id="unidadMedida" name="Tipo de Identificación" class="form-control">
+                            
+                            <option value="unidades">Cedúla (C.C)</option>
+                            <option value="kg">Tarjeta De Identidad (T.I)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                       <div class="col-md-8">
+                       <label htmlFor="name">N° De Identificación</label>
+                           <input id="email" name="email" type="text" placeholder="N° De Identificación" class="form-control"/>
+                       </div>
+                   </div>
+
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Dirección (En caso de que el pedido sea para llevar)</label>
-                           <input id="lname" name="name" type="text" placeholder="" class="form-control"/>
+                           <input id="lname" name="name" type="text" placeholder="Dirección" class="form-control"/>
                            
                        </div>
                    </div>
@@ -46,7 +68,7 @@ function Registrar_Pedidos() {
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Celular</label>
-                           <input id="email" name="email" type="text" placeholder="" class="form-control"/>
+                           <input id="email" name="email" type="text" placeholder="Celular" class="form-control"/>
                        </div>
                    </div>
 
@@ -54,8 +76,8 @@ function Registrar_Pedidos() {
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
-                       <label htmlFor="name">Pedido (Menú de todo lo que pidió la persona)</label>
-                           <input id="fname" name="name" type="text" placeholder="" class="form-control"/>
+                       <label htmlFor="name">Pedido (Menú de todo lo que pide la persona)</label>
+                           <input id="fname" name="name" type="text" placeholder="Pedido" class="form-control"/>
                            
                        </div>
                    </div>
@@ -64,7 +86,7 @@ function Registrar_Pedidos() {
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
                        <label htmlFor="name">Precio Total del Pedido</label>
-                           <input id="lname" name="name" type="text" placeholder="" class="form-control"/>
+                           <input id="lname" name="name" type="text" placeholder="Precio Total del Pedido" class="form-control"/>
                            
                        </div>
                    </div>
@@ -72,8 +94,8 @@ function Registrar_Pedidos() {
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                        <div class="col-md-8">
-                       <label htmlFor="name">Número de la Mesa (En caso del que el pedido sea en el restaurante)</label>
-                           <input id="lname" name="name" type="text" placeholder="" class="form-control"/>
+                       <label htmlFor="name">Número de la Mesa (En Caso De Que El Pedido Sea En El Restaurante)</label>
+                           <input id="lname" name="name" type="text" placeholder="Número de la Mesa" class="form-control"/>
                            
                        </div>
                    </div>
@@ -88,7 +110,7 @@ function Registrar_Pedidos() {
                     
                    <div class="form-group">
                             <div class="col-md-12 text-center">
-                              <Link to = '/pedidos  '> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                              <Link to = '/pedidos'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 
@@ -104,7 +126,9 @@ function Registrar_Pedidos() {
 {/* <!-- Footer--> */}
 <footer class="py-5 bg-dark">
        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
-   </footer></div>
+   </footer>
+
+</div>
   )
 }
 

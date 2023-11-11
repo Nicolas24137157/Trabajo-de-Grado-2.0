@@ -1,93 +1,85 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
+import {getReservasMesas} from '../mesas/registrar_reservas.service'
+
+
 
 function Historial_Ventas() {
+
+  const [reservas, setReservas] = useState([])
+  console.log(reservas)
+
+  useEffect(()=>{
+    getReservasMesas().then( reservas => setReservas(reservas))   
+  },[])
+  
+
   return (
-    <div>
-         {/* <!-- Header--> */}
-      <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-          <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Reservas</h1>
-            <p class="lead fw-normal text-white-50 mb-0">
+    <div className="animate__animated animate__fadeIn animate">
+        {/* <!-- Header--> */}
+       <header className="bg-dark py-5">
+        <div className="container px-4 px-lg-5 my-5">
+          <div className="text-center text-white">
+            <h1 className="display-4 fw-bolder">Reservas</h1>
+            <p className="lead fw-normal text-white-50 mb-0">
               Sección de Reservas
             </p>
           </div>
         </div>
       </header>
 
-      
+  
+<div class="container mt-5" style={{ marginTop: '30px' }}>
+  <div class="table table-responsive border-dark ">
+    <table class="table table-bordered table-hover text-center border border-4 ">
+      <thead class="table-light">
+        <tr>
+          <th colSpan="6">
+            <h2 class="text-start ">Reservas</h2>
+          </th>
+        </tr>
+        <tr>
+          <th>Identificación</th>
+          <th>Nombre de la Persona</th>
+          <th>Celular</th>
+          <th>N° Mesa</th>
+          <th>Fecha y Hora De La Reserva</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {reservas.map((reserva) => (
+          <tr key={reserva.id}>
+            <td>{reserva.identificacion}</td>
+            <td>{reserva.nombre_cliente}</td>
+            <td>{reserva.celular}</td>
+            <td>{reserva.numero_mesa}</td>
+            <td>{reserva.hora_reserva}</td>
+            <td>{reserva.estado}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
-      <div class="container">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2>Historial de Ventas</h2></div>
-                    <div class="col-sm-4">
-                        
-                    </div>
-                </div>
-            </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th># De Historia del Producto</th>
-                        <th>Nombre del Producto</th>
-                        <th>Mes del Producto Vendido</th>
-                        <th>Cantidades Totales vendidas (Cada mes)</th>
-                        <th>Ingreso Total Generado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
+    <Link to="/registrar_reservas">
+      <button type="button" class="btn btn-primary btn-lg d-flex justify-content-start">
+        Registrar
+      </button>{" "}
+    </Link>
 
-                        </td>
-                        <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-
-                        </td>
-                        <td>
-							<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>      
-                </tbody>
-            </table>
-        </div>
-    </div>     
+    <Link to="/Menu">
+      <button type="submit" className="btn btn-primary btn-lg d-flex justify-content-start" style={{ marginTop: '30px' }}>
+        Ir Atrás
+      </button>{" "}
+    </Link>
+  </div>
+</div>
 
 
       {/* <!-- Footer--> */}
-      <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">
+      <footer className="py-5 bg-dark">
+        <div className="container">
+          <p className="m-0 text-center text-white">
             Copyright &copy; Restaurante Oh La Lá
           </p>
         </div>

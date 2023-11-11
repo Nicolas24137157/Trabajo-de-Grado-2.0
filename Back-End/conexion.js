@@ -17,6 +17,12 @@ app.use('/insumos', insumosRouter)
 const proveedoresRouter = require('./proveedores')
 app.use('/proveedores', proveedoresRouter)
 
+const mesaRouter = require('./mesa')
+app.use('/mesa', mesaRouter)
+
+const reservas_mesasRouter = require('./reservas_mesas')
+app.use('/reservas_mesas', reservas_mesasRouter)
+
 
 
   
