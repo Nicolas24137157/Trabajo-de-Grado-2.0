@@ -4,6 +4,7 @@ import { postReservaMesas } from '../mesas/registrar_reservas.service'
 import { getMesas } from '../mesas/mesas.service'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import { format } from 'date-fns';
 
 function Registrar_Reservas() {
 
@@ -15,48 +16,29 @@ function Registrar_Reservas() {
     const [correo, setCorreo] = useState ('')
     const [mesas, setMesas] = useState([])
     const [escoger_mesa, setEscogerMesa]  = useState ('')
-    const [hora_reserva, setHoraReserva]  = useState ('')
+    const [fechaFormateada, setFechaFormateada] = useState(null); 
+    
+    
     
     useEffect(()=>{
         getMesas().then( mesas => setMesas(mesas))   
       },[])
 
-
-      //Formato para la Hora
-      const [formattedDate, setFormattedDate] = useState('');
-
       useEffect(() => {
-        // Assuming your date is in ISO format
-        const isoDate = '2023-11-10T09:51';
         
-        // Convert to Date object
-        const dateObject = new Date(isoDate);
-    
-        // Format the date
-        const formattedDateString = dateObject.toLocaleString('en-ES', {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        });
-    
-        setFormattedDate(formattedDateString);
+        setFechaFormateada(fechaFormateada);
       }, []);
       
     function handleClick (){
         const Reserva_Mesas = JSON.stringify({ 
             nombre_cliente: nombre_cliente,
-            hora_reserva:formattedDate,
+            hora_reserva:fechaFormateada,
             identificacion:identificacion,  
             tipo_identificacion:tipo_identificacion,
             celular:celular,
             correo:correo,
             numero_mesa:escoger_mesa
         })
-        
-        console.log(formattedDate)
         
         postReservaMesas(Reserva_Mesas)
        
@@ -187,7 +169,7 @@ function Registrar_Reservas() {
                           <label htmlFor="name">Fecha y Hora De La Reserva (Día / Fecha / Año)</label>
                           <input id="datetime" name="datetime" type="datetime-local" class="form-control"
                           onChange={(e)=>{
-                            setHoraReserva(e.target.value)
+                            setFechaFormateada(e.target.value)
                         }}
                           />
                       </div>

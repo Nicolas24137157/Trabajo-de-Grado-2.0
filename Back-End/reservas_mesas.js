@@ -1,3 +1,8 @@
+const {cliente, jsonCliente, jsonReserva} = require('./clases');
+const moment = require('moment'); 
+
+
+
 const express = require("express")
 const router = express.Router()
 const mysql = require('mysql2');
@@ -19,28 +24,67 @@ var con = mysql.createConnection({
       const correo = req.body['correo']
       const numero_mesa = req.body['numero_mesa']
       const hora_reserva = req.body['hora_reserva']
-      
-      
-      con.connect(function(err) {
-        if (err) throw err;
-        var sql = "INSERT INTO cliente (identificacion,tipo_identificacion,nombre_cliente,celular,correo) VALUES (?);";
-        var values = [
-          [identificacion,tipo_identificacion,nombre_cliente,celular,correo]
-        ]
-        con.query(sql, values, function (err, result) {
-          if (err) throw err;
-          var sql = "INSERT INTO reserva (hora_reserva,id_mesa,id_estado,identificacion) VALUES (?);";
-          var values = [
-          [hora_reserva,numero_mesa, 1 /* estado 1 es pendiente creado en la bd*/,identificacion]
-        ]
-        con.query(sql, values, function (err, result) {
-          if (err) throw err;
-          res.json("1 record inserted")        
-        });       
-        });
-      }); 
-
         
+      
+        // Validacion para solo poder escoger las mesas que están disponibles.
+        // Obtiene la hora actual
+       // Si estás en un entorno de Node.js
+        const fecha = moment(hora_reserva);
+
+        var horaActual = new Date(hora_reserva);
+        // Suma 2 horas a la hora actual
+        horaActual.setHours(horaActual.getHours() - 2);
+        const horamenos = moment(horaActual)
+        horaActual.setHours(horaActual.getHours() + 4);
+        const horamas = moment(horaActual)
+        const horaactual = moment(hora_reserva)
+        // Muestra la hora actual más 2 horas
+        con.connect(function(err) {
+          if (err) throw err;
+          var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+          var values = [numero_mesa,horamenos.format('YYYY-MM-DD HH:mm:ss'),horaactual.format('YYYY-MM-DD HH:mm:ss')]
+          console.log(values)
+          con.query(sql, values, function (err, result) {            
+            if (err) throw err;
+              console.log(result)
+              if(result.length > 0){
+                res.json("No Hay Disponibilidad")
+              }else{
+                con.connect(function(err) {
+                  if (err) throw err;
+                  var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+                  var values = [numero_mesa,horaactual.format('YYYY-MM-DD HH:mm:ss'),horamas.format('YYYY-MM-DD HH:mm:ss')]
+                  con.query(sql, values, function (err, result) {
+                    if (err) throw err;
+                      console.log(result)
+                      if(result.length > 0){
+                        res.json("No Hay Disponibilidad")
+                      }else{
+                        con.connect(function(err) {
+                          if (err) throw err;
+                          var sql = "INSERT INTO cliente (identificacion,tipo_identificacion,nombre_cliente,celular,correo) VALUES (?);";
+                          var values = [
+                            [identificacion,tipo_identificacion,nombre_cliente,celular,correo]
+                          ]
+                          con.query(sql, values, function (err, result) {
+                            if (err) throw err;
+                            var sql = "INSERT INTO reserva (hora_reserva,id_mesa,id_estado,identificacion) VALUES (?);";
+                            var values = [
+                            [hora_reserva,numero_mesa, 1 /* estado 1 es pendiente creado en la bd*/,identificacion]
+                          ]
+                          con.query(sql, values, function (err, result) {
+                            if (err) throw err;
+                            res.json("1 record inserted")        
+                          });       
+                          });
+                        });  
+                      }                           
+                  });
+                });          
+              }
+          });
+        });  
+         
   })
   
   //READ Solicitar Información

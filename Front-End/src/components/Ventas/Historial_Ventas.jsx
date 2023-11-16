@@ -1,18 +1,64 @@
 import React, {useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
-import {getReservasMesas} from '../mesas/registrar_reservas.service'
-
+import {getReservasMesas,updateReservasMesas} from '../mesas/registrar_reservas.service'
+import Swal from 'sweetalert2';
 
 
 function Historial_Ventas() {
 
   const [reservas, setReservas] = useState([])
+  
   console.log(reservas)
+  
 
   useEffect(()=>{
     getReservasMesas().then( reservas => setReservas(reservas))   
   },[])
   
+  const handleClickEstado = (id_reservas_mesas, estadoActual) => {
+    const estados = {
+      1: 'Pendiente',
+      2: 'Realizado',
+      3: 'Finalizada',
+      4: 'Cancelado',
+    };
+  
+    Swal.fire({
+      title: 'Selecciona un nuevo estado',
+      input: 'select',
+      inputOptions: estados,
+      inputValue: estadoActual,
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Cambiar Estado',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const id_estado = result.value;
+  
+        // Llama a la función para actualizar el estado en la base de datos
+        updateReservasMesas(id_reservas_mesas, id_estado)
+          .then(() => {
+            // Actualiza el estado localmente en la lista de reservas
+            setReservas((prevReservas) =>
+              prevReservas.map((reserva) =>
+                reserva.id === id_reservas_mesas ? { ...reserva, estado: id_estado } : reserva
+              )
+            );
+  
+            // Muestra un mensaje de éxito con el nombre del estado
+            Swal.fire('¡Estado actualizado!', `La reserva ahora está ${estados[id_estado]}`, 'success');
+          })
+          .catch((error) => {
+            console.error('Error al actualizar el estado:', error);
+            Swal.fire('Error', 'Hubo un error al actualizar el estado.', 'error');
+          });
+      }
+    });
+  };
+  
+  
+  
+
 
   return (
     <div className="animate__animated animate__fadeIn animate">
@@ -55,7 +101,14 @@ function Historial_Ventas() {
             <td>{reserva.celular}</td>
             <td>{reserva.numero_mesa}</td>
             <td>{reserva.hora_reserva}</td>
-            <td>{reserva.estado}</td>
+            <td>
+        <button
+          className="btn btn-link"
+          onClick={() => handleClickEstado(reserva.id, reserva.estado)}
+        >
+          {reserva.estado}
+        </button>
+      </td>
           </tr>
         ))}
       </tbody>
