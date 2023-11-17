@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { postReservaMesas } from '../mesas/registrar_reservas.service'
+import { postReservaMesas } from './registrar_reservas.service'
 import { getMesas } from '../mesas/mesas.service'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
@@ -48,7 +48,7 @@ function Registrar_Reservas() {
                 icon: 'success',
         }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = '/historial_ventas';
+              window.location.href = '/reservas';
             }
         });
     });
@@ -193,7 +193,7 @@ function Registrar_Reservas() {
 
                    <div class="form-group">
                             <div class="col-md-12 text-center">
-                              <Link to = '/historial_ventas'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                              <Link to = '/reservas'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 

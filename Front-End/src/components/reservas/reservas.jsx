@@ -1,15 +1,15 @@
 import React, {useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
-import {getReservasMesas,updateReservasMesas} from '../mesas/registrar_reservas.service'
+import {getReservasMesas, updateEstadoReservasMesas} from './registrar_reservas.service'
 import Swal from 'sweetalert2';
 
 
-function Historial_Ventas() {
+function Reservas() {
 
   const [reservas, setReservas] = useState([])
   
   console.log(reservas)
-  
+  const [updates, setUpdates] = useState(0)
 
   useEffect(()=>{
     getReservasMesas().then( reservas => setReservas(reservas))   
@@ -34,15 +34,13 @@ function Historial_Ventas() {
     }).then((result) => {
       if (result.isConfirmed) {
         const id_estado = result.value;
-  
+        console.log(id_estado, id_reservas_mesas);
         // Llama a la función para actualizar el estado en la base de datos
-        updateReservasMesas(id_reservas_mesas, id_estado)
+        updateEstadoReservasMesas(id_reservas_mesas, id_estado)
           .then(() => {
             // Actualiza el estado localmente en la lista de reservas
-            setReservas((prevReservas) =>
-              prevReservas.map((reserva) =>
-                reserva.id === id_reservas_mesas ? { ...reserva, estado: id_estado } : reserva
-              )
+            getReservasMesas().then( reservas => setReservas(reservas)
+              
             );
   
             // Muestra un mensaje de éxito con el nombre del estado
@@ -54,6 +52,7 @@ function Historial_Ventas() {
           });
       }
     });
+
   };
   
   
@@ -75,13 +74,13 @@ function Historial_Ventas() {
       </header>
 
   
-<div class="container mt-5" style={{ marginTop: '30px' }}>
-  <div class="table table-responsive border-dark ">
-    <table class="table table-bordered table-hover text-center border border-4 ">
-      <thead class="table-light">
+<div className="container mt-5" style={{ marginTop: '30px' }}>
+  <div className="table table-responsive border-dark ">
+    <table className="table table-bordered table-hover text-center border border-4 ">
+      <thead className="table-light">
         <tr>
           <th colSpan="6">
-            <h2 class="text-start ">Reservas</h2>
+            <h2 className="text-start ">Reservas</h2>
           </th>
         </tr>
         <tr>
@@ -94,28 +93,27 @@ function Historial_Ventas() {
         </tr>
       </thead>
       <tbody>
-        {reservas.map((reserva) => (
-          <tr key={reserva.id}>
+        {reservas.map( reserva =>                   
+          <tr key={reserva.id_reserva}>
             <td>{reserva.identificacion}</td>
             <td>{reserva.nombre_cliente}</td>
             <td>{reserva.celular}</td>
             <td>{reserva.numero_mesa}</td>
             <td>{reserva.hora_reserva}</td>
             <td>
-        <button
-          className="btn btn-link"
-          onClick={() => handleClickEstado(reserva.id, reserva.estado)}
-        >
-          {reserva.estado}
-        </button>
-      </td>
+              <button
+                className="btn btn-link"
+                onClick={() => handleClickEstado(reserva.id_reserva, reserva.estado)}>
+                  {reserva.estado}
+              </button>
+            </td>
           </tr>
-        ))}
+      )}
       </tbody>
     </table>
 
     <Link to="/registrar_reservas">
-      <button type="button" class="btn btn-primary btn-lg d-flex justify-content-start">
+      <button type="button" className="btn btn-primary btn-lg d-flex justify-content-start">
         Registrar
       </button>{" "}
     </Link>
@@ -141,4 +139,4 @@ function Historial_Ventas() {
   )
 }
 
-export default Historial_Ventas
+export default Reservas

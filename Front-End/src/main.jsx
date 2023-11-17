@@ -14,14 +14,14 @@ import Proveedores from "/src/components/proveedores/Proveedores.jsx";
 import Registrar_Proveedor from "/src/components/proveedores/Registrar_Proveedor.jsx";
 import Editar_Proveedor from "/src/components/proveedores/Editar_Proveedor.jsx";
 import Ventas from "/src/components/Ventas/Ventas.jsx";
-import Historial_Ventas from "/src/components/Ventas/Historial_Ventas.jsx";
+import Reservas from "/src/components/reservas/Reservas.jsx";
 import Pedidos from "./components/pedidos/Pedidos.jsx";
 import Registrar_Pedidos from "./components/pedidos/Registrar_Pedidos.jsx";
 import Registrar_Devoluciones from "./components/devoluciones/Registrar_Devoluciones.jsx";
 import Seccion_Devoluciones from "./components/devoluciones/Seccion_Devoluciones.jsx";
 import Mesas from "./components/mesas/Mesas.jsx";
 import Registrar_Mesa from "./components/mesas/Registrar_Mesa.jsx";
-import Registrar_Reservas from "./components/mesas/Registrar_Reservas.jsx";
+import Registrar_Reservas from "./components/reservas/Registrar_Reservas.jsx";
 
 
 
@@ -89,8 +89,8 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "historial_ventas",
-    element: <Historial_Ventas/>,
+    path: "reservas",
+    element: <Reservas/>,
   },
 
   {

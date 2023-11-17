@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Ventas() {
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn animate">
            {/* <!-- Header--> */}
       <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -22,81 +22,41 @@ function Ventas() {
         </div>
       </div>
 
-      <div className="container">
-  <div className="table-wrapper">
-    <div className="table-title">
-      <div className="row">
-        <div className="col-sm-8">
-          <h2>Ventas</h2>
-        </div>
-        <div className="col-sm-4"></div>
-      </div>
-    </div>
-    <table className="table table-bordered">
-      <thead>
-        <tr>
-          <th>Nombre del Producto</th>
-          <th>Mes del Producto Vendido</th>
-          <th>Cantidades Totales Vendidas (Cada Mes)</th>
-          <th>Ingreso Total Generado</th>
-          {/* <th>Dirección</th> */}
-          <th style={{ width: "160px"}}>Opciones</th>
-        </tr>
-        
-      </thead>
-      <tbody>
-        {/* {proveedores.map((proveedor) => ( */}
-          {/* <tr key={proveedor.id_proveedor}>
-            <td>{proveedor.id_proveedor}</td>
-            <td>{proveedor.NIT}</td>
-            <td>{proveedor.nombre_proveedor}</td>
-            <td>{proveedor.celular}</td>
-            <td>{proveedor.direccion}</td> */}
-            <td className="td-botones">
-              <div className="botones">
-              <button
-                type="button"
-                className="btn btn-warning"
-                // onClick={() => editarProveedor(proveedor.id_proveedor)}
-              >
-                Editar
-              </button>
-             
+      <div class="container mt-5" style={{ marginTop: "30px" }}>
+        <div class="table table-responsive border-dark ">
+          <table class="table table-bordered table-hover text-center border border-4 ">
+            <thead class="table-light">
+              <tr>
+                <th colSpan="6">
+                  <h2 class="text-start ">Ventas</h2>
+                </th>
+              </tr>
+              <tr>
+                {/* <th>ID Del Proveedor</th> */}
+                <th>Nombre Del Producto</th>
+                <th>Precio</th>
+                <th>Cantidades Totales Vendidas</th>
+                <th>Ingreso Total Generado</th>
+                <th style={{ width: "160px" }}>Opciones</th>
+              </tr>
+            </thead>
               
-              <button
-                type="button"
-                className="btn btn-danger ml-2"
-                // onClick={() => borrarProveedor(proveedor.id_proveedor)}
-              >
-                Borrar
-              </button>
-              </div>
-           </td> 
-          {/* </tr> */}
-        {/* // ))} */}
-      </tbody>
-    </table>
-    <div className="col-sm-12 text-start">
-        <Link to="/registrar_proveedor">
-          <button type="submit" className="btn btn-primary btn-lg">
-            Registrar Proveedor
-          </button>{" "}
-        </Link>
+          </table>
+
+          
+
+          <Link to="/Menu">
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg d-flex justify-content-start"
+              style={{ marginTop: "30px" }}
+            >
+              Ir Atrás
+            </button>{" "}
+          </Link>
+        </div>
       </div>
 
-      <div className="col-sm-12 text-start" style={{paddingTop: '30px'}}>
-        <Link to="/Menu">
-          <button type="submit" className="btn btn-primary btn-lg">
-            Ir Atrás
-          </button>{" "}
-        </Link>
-      </div>
-      
-  </div>
-  <div>
-  
-</div>
-</div>
 
 
       {/* <!-- Footer--> */}

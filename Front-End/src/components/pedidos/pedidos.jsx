@@ -16,78 +16,50 @@ function Pedidos() {
         </div>
       </header>
 
-      <div className="container">
-  <div className="table-wrapper">
-    <div className="table-title">
-      <div className="row">
-        <div className="col-sm-8">
-          <h2>Pedidos</h2>
+      <div class="form-group">
+        <div class="col-md-12 text-center">
+          
         </div>
-        <div className="col-sm-4"></div>
       </div>
-    </div>
-    <table className="table table-bordered">
-      <thead>
-        <tr>
-          <th>ID Del Pedido</th>
-          <th>Nombre de la Persona del Pedido</th>
-          <th>Dirección</th>
-          <th>Celular</th>
-          <th>Pedido</th>
-          <th>Precio Total del Pedido</th>
-          <th>Número de Mesa</th>
-          <th>Estado del Pedido</th>
 
-        </tr>
-      </thead>
-      <tbody>
-        {/* Comentario: Esta sección se rellenará con datos de proveedores */}
-        {/* {proveedores.map((proveedor) => (
-          <tr>
-            <td>{proveedor.id_proveedor}</td>
-            <td>{proveedor.NIT}</td>
-            <td>{proveedor.nombre_proveedor}</td>
-            <td>
-              <div className="botones">
-                <button
-                  type="button"
-                  className="btn btn-warning"
-                  onClick={() => editarProveedor(proveedor.id_proveedor)}
-                >
-                  Editar
-                </button>
+      <div class="container mt-5" style={{ marginTop: "30px" }}>
+        <div class="table table-responsive border-dark ">
+          <table class="table table-bordered table-hover text-center border border-4 ">
+            <thead class="table-light">
+              <tr>
+                <th colSpan="6">
+                  <h2 class="text-start ">Pedidos</h2>
+                </th>
+              </tr>
+              <tr>
+                {/* <th>ID Del Proveedor</th> */}
+                <th>ID Del Pedido</th>
+                <th>Nombre De La Persona Del Pedido</th>
+                <th>Dirección</th>
+                <th>Celular</th>
+                <th>Pedido</th>
+                <th>Precio Total Del Pedido</th> 
+                <th>Número de Mesa</th> 
+                <th>Estado Del Pedido</th> 
+                <th style={{ width: "160px" }}>Opciones</th>
+              </tr>
+            </thead>
+              
+          </table>
 
-                <button
-                  type="button"
-                  className="btn btn-danger ml-2"
-                  onClick={() => borrarProveedor(proveedor.id_proveedor)}
-                >
-                  Borrar
-                </button>
-              </div>
-            </td>
-          </tr>
-        ))} */}
-      </tbody>
-    </table>
-    <div className="col-sm-12 text-start">
-      <Link to="/registrar_pedidos">
-        <button type="submit" className="btn btn-primary btn-lg">
-          Registrar Pedido
-        </button>{" "}
-      </Link>
-    </div>
+          
 
-    <div className="col-sm-12 text-start" style={{ paddingTop: '30px' }}>
-      <Link to="/Menu">
-        <button type="submit" className="btn btn-primary btn-lg">
-          Ir Atrás
-        </button>{" "}
-      </Link>
-    </div>
-  </div>
-  <div></div>
-</div>
+          <Link to="/Menu">
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg d-flex justify-content-start"
+              style={{ marginTop: "30px" }}
+            >
+              Ir Atrás
+            </button>{" "}
+          </Link>
+        </div>
+      </div>
 
 
 

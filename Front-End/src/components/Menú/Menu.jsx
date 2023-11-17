@@ -3,7 +3,7 @@ import plato_comida from '@assets/plato_comida.jpg'
 import insumo from '@assets/insumos.jpg'
 import proveedores from '@assets/Proveedores.jpg'
 import ventas from '@assets/ventas_comidas.jpg'
-import historial_inventario from '@assets/historial-inventario.png'
+import reservas_mesas from '@assets/registro_mesas.jpeg'
 import pedidos from '@assets/pedidos_comida.jpg'
 import devoluciones from '@assets/devoluciones.jpg'
 import seccion_registro from '@assets/seccion_registro.jpeg'
@@ -134,7 +134,7 @@ function Menu() {
                     <div class="col mb-5">
                         <div class="card h-100">
                             {/* <!-- Product image--> */}
-                            {/* <img class="card-img-top" src={registro_mesas} alt="..." /> */}
+                             <img class="card-img-top" src={reservas_mesas} alt="..." /> 
                             {/* <!-- Product details--> */}
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -177,7 +177,7 @@ function Menu() {
                             </div>
                             {/* <!-- Product actions--> */}
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                               <Link to = '/historial_ventas'> <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
+                               <Link to = '/reservas'> <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ingresar</a></div></Link>
                             </div>
                         </div>
                     </div>
